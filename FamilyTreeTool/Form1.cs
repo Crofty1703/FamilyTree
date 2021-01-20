@@ -47,10 +47,26 @@ namespace FamilyTreeTool
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            Form tree = new tree(textBox1.Text);
+            Form tree = new tree(textBox1.Text, textBox2.Text);
             this.Hide();
             tree.Show();
             
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1;
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "ged files (*.ged)|*.ged|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBox2.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

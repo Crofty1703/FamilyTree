@@ -19,37 +19,24 @@ namespace FamilyTreeTool
     public partial class tree : Form
     {
         static GedcomDatabase tree1;
+        static GedcomDatabase tree2;
         public static void ctree(string file)
         {
             var gedcomReader = GedcomRecordReader.CreateReader(file);
             tree1 = gedcomReader.Database;
+            if (tree1 != null)
+            {
+                tree2 = gedcomReader.Database;
+            }
         }
-        public tree(string file)
+        public tree(string file,string file1)
         {
             InitializeComponent();
             ctree(file);
-
-            int GetHashCode()
-            {
-                int x =0;
-                if (tree1 != null)
-                {
-                    foreach (var p in tree1)
-                    {
-                        x = p.GetHashCode();
-                    }
-                }
-                return x;
-            }
-            
+            ctree(file1);
         }
 
         private void tree_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
