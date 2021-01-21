@@ -35,14 +35,7 @@ namespace FamilyTreeTool
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1;
-            openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter= "ged files (*.ged)|*.ged|All files (*.*)|*.*";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox1.Text = openFileDialog1.FileName;
-            }
-
+            textBox1.Text = browse();
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -50,17 +43,25 @@ namespace FamilyTreeTool
             Form tree = new tree(textBox1.Text, textBox2.Text);
             this.Hide();
             tree.Show();
-            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
+        {
+            textBox2.Text = browse();
+        }
+
+        public string browse()
         {
             OpenFileDialog openFileDialog1;
             openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "ged files (*.ged)|*.ged|All files (*.*)|*.*";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBox2.Text = openFileDialog1.FileName;
+                return openFileDialog1.FileName;
+            }
+            else
+            {
+                return "";
             }
         }
 
